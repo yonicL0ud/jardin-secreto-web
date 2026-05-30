@@ -1,0 +1,44 @@
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;   
+        gap: 15px;
+    }
+    
+    .grid-destacados, .grid-catalogo {
+        grid-template-columns: 1fr 1fr; 
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .grid-destacados, .grid-catalogo {
+        grid-template-columns: 1fr; 
+    }
+    
+    .filtros {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .botones-filtro {
+        margin-left: 0;
+        flex-direction: column;
+        width: 90%;
+        gap: 5px;
+    }
+
+    #contactoForm, .carrito-contenido {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .resumen-carrito {
+        text-align: center;       
+    }
+}
