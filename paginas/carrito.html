@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carrito - Jardín Secreto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../img/logo.svg" alt="Logo Jardín Secreto">
+            <h1>Jardín Secreto</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+        <div class="carrito-icono">
+            <span>🛒</span>
+            <span class="contador-carrito" id="contador-header">0</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="carrito-contenido">
+            <h2>Mi Carrito 🛒</h2>
+            <div id="items-carrito" class="items-carrito"></div>
+            <div class="resumen-carrito">
+                <p>Subtotal: <span id="subtotal">S/ 0.00</span></p>
+                <p>Total: <span id="total">S/ 0.00</span></p>
+                <button id="vaciar-carrito" class="btn-secundario">Vaciar carrito</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

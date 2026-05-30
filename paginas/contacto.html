@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Jardín Secreto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../img/logo.svg" alt="Logo Jardín Secreto">
+            <h1>Jardín Secreto</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+        <div class="carrito-icono">
+            <span>🛒</span>
+            <span class="contador-carrito" id="contador-header">0</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="formulario-contacto">
+            <h2>Contáctanos 🌸</h2>
+            <p>¿Tienes dudas sobre nuestras plantas? Escríbenos</p>
+            <form id="contactoForm">
+                <div class="campo">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre">
+                    <small class="error-mensaje" id="error-nombre"></small>
+                </div>
+                
+                <div class="campo">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <small class="error-mensaje" id="error-email"></small>
+                </div>
+                
+                <div class="campo">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5"></textarea>
+                    <small class="error-mensaje" id="error-mensaje"></small>
+                </div>
+                
+                <button type="submit" class="btn-enviar">Enviar mensaje 🌿</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/validaciones.js"></script>
+    <script src="../js/eventos.js"></script>
+    <script src="../js/creativo.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

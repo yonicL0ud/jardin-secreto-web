@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jardín Secreto | Plantas y decoración natural</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.svg" alt="Logo Jardín Secreto - Hoja verde">
+            <h1>Jardín Secreto</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="paginas/catalogo.html">Catálogo</a></li>
+                <li><a href="paginas/contacto.html">Contacto</a></li>
+                <li><a href="paginas/carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+        <div class="carrito-icono">
+            <span>🛒</span>
+            <span class="contador-carrito" id="contador-header">0</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner-principal">
+            <div class="banner-contenido">
+                <h2>Bienvenido a Jardín Secreto</h2>
+                <p>Descubre la magia de las plantas en tu hogar</p>
+                <a href="paginas/catalogo.html" class="btn-primario">Ver catálogo</a>
+            </div>
+        </section>
+
+        <section class="productos-destacados">
+            <h2>Nuestros favoritos 🌿</h2>
+            <div id="destacados-container" class="grid-destacados"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/catalogo.js"></script>
+    <script src="js/validaciones.js"></script>
+    <script src="js/eventos.js"></script>
+    <script src="js/creativo.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

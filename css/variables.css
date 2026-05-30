@@ -1,0 +1,11 @@
+:root {
+    --verde-primario: #2D6A4F;
+    --verde-claro: #40916C;
+    --crema: #F4E4CD;
+    --rosa-flor: #F9A8D4;
+    --marron: #D4A373;
+    --gris-claro: #F8F9FA;
+    --texto-oscuro: #2C3E50;
+    --sombra: 0 4px 12px rgba(0,0,0,0.08);
+    --transicion: all 0.3s ease;
+}

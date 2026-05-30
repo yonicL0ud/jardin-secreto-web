@@ -1,0 +1,19 @@
+@import url('variables.css');
+@import url('layout.css');
+@import url('grid.css');
+@import url('componentes.css');
+@import url('responsive.css');
+@import url('animaciones.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #F4E4CD;
+    color: #2C3E50;
+    line-height: 1.6;
+}
