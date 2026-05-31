@@ -1,9 +1,12 @@
 function inicializarEventos() {
     // para el formulario de contacto
+    console.log("🔄 Inicializando eventos...");
     const formContacto = document.getElementById('contactoForm');
+    console.log("Formulario encontrado:", formContacto);
     if (formContacto) {
         formContacto.addEventListener('submit', (e) => {
             e.preventDefault();
+            console.log("Formulario enviado");
             
             const nombre = document.getElementById('nombre')?.value || '';
             const email = document.getElementById('email')?.value || '';

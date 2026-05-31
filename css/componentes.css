@@ -131,3 +131,20 @@
     color: var(--verde-primario);
     margin-bottom: 10px;
 }
+
+.formulario-contacto {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.formulario-contacto h2 {
+    color: var(--verde-primario);
+    margin-bottom: 10px;
+}
+
+.formulario-contacto p {
+    color: var(--texto-oscuro);
+    margin-bottom: 30px;
+}
