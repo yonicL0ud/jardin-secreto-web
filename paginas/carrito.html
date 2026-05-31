@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Carrito - Jardín Secreto</title>
+    <title>Jardín Secreto | Carrito</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -18,10 +18,9 @@
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
             </ul>
         </nav>
-        <div class="carrito-icono">
+        <div class="carrito-icono" onclick="window.location.href='carrito.html'">
             <span>🛒</span>
             <span class="contador-carrito" id="contador-header">0</span>
         </div>
@@ -32,8 +31,14 @@
             <h2>Mi Carrito 🛒</h2>
             <div id="items-carrito" class="items-carrito"></div>
             <div class="resumen-carrito">
-                <p>Subtotal: <span id="subtotal">S/ 0.00</span></p>
-                <p>Total: <span id="total">S/ 0.00</span></p>
+                <div class="resumen-linea">
+                    <p>Subtotal:</p>
+                    <p id="subtotal">S/ 0.00</p>
+                </div>
+                <div class="resumen-linea total">
+                    <p>Total:</p>
+                    <p id="total">S/ 0.00</p>
+                </div>
                 <button id="vaciar-carrito" class="btn-secundario">Vaciar carrito</button>
             </div>
         </section>
@@ -46,12 +51,6 @@
     <script src="../js/data.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/storage.js"></script>
-    <script src="../js/validaciones.js"></script>
-    <script src="../js/creativo.js"></script>
-    <script src="../js/eventos.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-    cargarCarritoStorage();
-    </script>
 </body>
 </html>

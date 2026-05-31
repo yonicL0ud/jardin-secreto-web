@@ -2,31 +2,31 @@ let carrito = [];
 
 function agregarAlCarrito(id) {
     const producto = productos.find(p => p.id === id);
-    if (!producto) return;
-
-    const existente = carrito.find(item => item.id === id);
-    if (existente) {
-        existente.cantidad++;
+    const itemExistente = carrito.find(item => item.id === id);
+    
+    if (itemExistente) {
+        itemExistente.cantidad++;
     } else {
         carrito.push({
             id: producto.id,
             nombre: producto.nombre,
             precio: producto.precio,
-            imagen: producto.imagenHome || producto.imagen,
+            imagen: producto.imagen,
             cantidad: 1
         });
     }
-
+    
     guardarCarrito();
     actualizarContadorCarrito();
     actualizarVistaCarrito();
+    mostrarNotificacion(`${producto.nombre} agregado al carrito 🌿`);
 }
 
 function eliminarDelCarrito(id) {
     carrito = carrito.filter(item => item.id !== id);
     guardarCarrito();
-    actualizarVistaCarrito();
     actualizarContadorCarrito();
+    actualizarVistaCarrito();
 }
 
 function actualizarCantidad(id, nuevaCantidad) {
@@ -34,100 +34,100 @@ function actualizarCantidad(id, nuevaCantidad) {
         eliminarDelCarrito(id);
         return;
     }
+    
     const item = carrito.find(item => item.id === id);
     if (item) {
         item.cantidad = nuevaCantidad;
+        guardarCarrito();
+        actualizarContadorCarrito();
+        actualizarVistaCarrito();
     }
-    guardarCarrito();
-    actualizarVistaCarrito();
-    actualizarContadorCarrito();
-}
-
-function calcularTotal() {
-    let total = 0;
-    for (let i = 0; i < carrito.length; i++) {
-        total = total + (carrito[i].precio * carrito[i].cantidad);
-    }
-    return total;
-}
-
-function calcularTotalItems() {
-    let total = 0;
-    for (let i = 0; i < carrito.length; i++) {
-        total = total + carrito[i].cantidad;
-    }
-    return total;
-}
-
-function actualizarContadorCarrito() {
-    const contadores = document.querySelectorAll(".contador-carrito");
-    const totalItems = calcularTotalItems();
-    for (let i = 0; i < contadores.length; i++) {
-        contadores[i].textContent = totalItems;
-    }
-}
-
-function actualizarVistaCarrito() {
-    const contenedor = document.getElementById("items-carrito");
-    if (!contenedor) return;
-
-    if (carrito.length === 0) {
-        contenedor.innerHTML = '<p style="text-align:center; padding:40px;">🌸 Tu carrito está vacío</p>';
-        const subtotal = document.getElementById("subtotal");
-        const total = document.getElementById("total");
-        if (subtotal) subtotal.textContent = "S/ 0.00";
-        if (total) total.textContent = "S/ 0.00";
-        return;
-    }
-
-    contenedor.innerHTML = "";
-    for (let i = 0; i < carrito.length; i++) {
-        const item = carrito[i];
-        const precioTotal = item.precio * item.cantidad;
-        contenedor.innerHTML += `
-            <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px; margin-bottom: 10px; border-radius: 12px;">
-                <div style="flex:2;">
-                    <h3 style="margin:0;">${item.nombre}</h3>
-                    <p style="margin:5px 0;">S/ ${item.precio.toFixed(2)} c/u</p>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <button onclick="actualizarCantidad(${item.id}, ${item.cantidad - 1})" style="background: #2D6A4F; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">-</button>
-                    <span style="font-weight: bold; min-width: 30px; text-align: center;">${item.cantidad}</span>
-                    <button onclick="actualizarCantidad(${item.id}, ${item.cantidad + 1})" style="background: #2D6A4F; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">+</button>
-                </div>
-                <div style="min-width: 100px; text-align: right;">
-                    <p style="margin:0; font-weight: bold;">S/ ${precioTotal.toFixed(2)}</p>
-                </div>
-                <button onclick="eliminarDelCarrito(${item.id})" style="background: #e74c3c; color: white; border: none; padding: 5px 12px; border-radius: 8px; cursor: pointer; margin-left: 10px;">Eliminar</button>
-            </div>
-        `;
-    }
-
-    const totalCalculado = calcularTotal();
-    const subtotal = document.getElementById("subtotal");
-    const total = document.getElementById("total");
-    if (subtotal) subtotal.textContent = "S/ " + totalCalculado.toFixed(2);
-    if (total) total.textContent = "S/ " + totalCalculado.toFixed(2);
 }
 
 function vaciarCarrito() {
-    carrito = [];
-    guardarCarrito();
-    actualizarVistaCarrito();
-    actualizarContadorCarrito();
-}
-
-function guardarCarrito() {
-    localStorage.setItem('jardinSecretoCarrito', JSON.stringify(carrito));
-}
-
-function cargarCarritoStorage() {
-    const guardado = localStorage.getItem('jardinSecretoCarrito');
-    if (guardado) {
-        carrito = JSON.parse(guardado);
+    if (confirm('¿Seguro que quieres vaciar el carrito?')) {
+        carrito = [];
+        guardarCarrito();
         actualizarContadorCarrito();
         actualizarVistaCarrito();
-    } else {
-        carrito = [];
+        mostrarNotificacion('Carrito vaciado');
     }
+}
+
+function calcularTotal() {
+    return carrito.reduce((total, item) => total + (item.precio * item.cantidad), 0);
+}
+
+function calcularTotalItems() {
+    return carrito.reduce((total, item) => total + item.cantidad, 0);
+}
+
+function actualizarContadorCarrito() {
+    const totalItems = calcularTotalItems();
+    document.querySelectorAll('.contador-carrito').forEach(el => {
+        el.textContent = totalItems;
+    });
+}
+
+function actualizarVistaCarrito() {
+    const contenedor = document.getElementById('items-carrito');
+    if (!contenedor) return;
+    
+    if (carrito.length === 0) {
+        contenedor.innerHTML = '<p class="carrito-vacio" style="text-align:center; padding:2rem;">🌸 Tu carrito está vacío. ¡Agrega algunas plantas!</p>';
+        document.getElementById('subtotal').textContent = 'S/ 0.00';
+        document.getElementById('total').textContent = 'S/ 0.00';
+        return;
+    }
+    
+    contenedor.innerHTML = carrito.map(item => `
+        <div class="item-carrito">
+            <img src="${item.imagen}" alt="${item.nombre}">
+            <div class="info">
+                <h4>${item.nombre}</h4>
+                <p>S/ ${item.precio}</p>
+            </div>
+            <div class="cantidad">
+                <button class="btn-cantidad" data-id="${item.id}" data-cambio="-1">-</button>
+                <span>${item.cantidad}</span>
+                <button class="btn-cantidad" data-id="${item.id}" data-cambio="1">+</button>
+            </div>
+            <p class="subtotal-item">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+            <button class="btn-eliminar" data-id="${item.id}">🗑️</button>
+        </div>
+    `).join('');
+    
+    const subtotal = calcularTotal();
+    document.getElementById('subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
+    document.getElementById('total').textContent = `S/ ${subtotal.toFixed(2)}`;
+    
+    document.querySelectorAll('.btn-cantidad').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id);
+            const cambio = parseInt(btn.dataset.cambio);
+            const item = carrito.find(i => i.id === id);
+            if (item) {
+                actualizarCantidad(id, item.cantidad + cambio);
+            }
+        });
+    });
+    
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+        btn.addEventListener('click', () => {
+            eliminarDelCarrito(parseInt(btn.dataset.id));
+        });
+    });
+    
+    const btnVaciar = document.getElementById('vaciar-carrito');
+    if (btnVaciar) {
+        btnVaciar.onclick = () => vaciarCarrito();
+    }
+}
+
+function mostrarNotificacion(mensaje) {
+    const notif = document.createElement('div');
+    notif.className = 'notificacion';
+    notif.textContent = mensaje;
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 2000);
 }

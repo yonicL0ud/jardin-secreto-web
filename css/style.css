@@ -13,7 +13,7 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    background-color: #F4E4CD;
-    color: #2C3E50;
+    background-color: var(--crema);
+    color: var(--texto-oscuro);
     line-height: 1.6;
 }

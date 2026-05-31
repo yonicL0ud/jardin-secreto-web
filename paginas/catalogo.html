@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Jardín Secreto</title>
+    <title>Jardín Secreto | Catálogo</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -18,24 +18,23 @@
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
             </ul>
         </nav>
-        <div class="carrito-icono">
+        <div class="carrito-icono" onclick="window.location.href='carrito.html'">
             <span>🛒</span>
             <span class="contador-carrito" id="contador-header">0</span>
         </div>
     </header>
 
     <main>
-        <section class="filtros">
+        <div class="filtros">
             <input type="text" id="buscador" placeholder="🔍 Buscar plantas...">
             <div class="botones-filtro">
-                <button data-filtro="todos" class="filtro-btn activo">Todos</button>
-                <button data-filtro="facil" class="filtro-btn">Cuidado fácil 🌱</button>
-                <button data-filtro="moderado" class="filtro-btn">Cuidado moderado 🪴</button>
+                <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+                <button class="filtro-btn" data-filtro="fácil">Cuidado fácil</button>
+                <button class="filtro-btn" data-filtro="moderado">Cuidado moderado</button>
             </div>
-        </section>
+        </div>
         
         <section class="catalogo">
             <div id="catalogo-container" class="grid-catalogo"></div>
@@ -49,10 +48,7 @@
     <script src="../js/data.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/storage.js"></script>
-    <script src="../js/validaciones.js"></script>
-    <script src="../js/eventos.js"></script>
     <script src="../js/catalogo.js"></script>
-    <script src="../js/creativo.js"></script>
     <script src="../js/main.js"></script>
 </body>
 </html>

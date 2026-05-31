@@ -1,55 +1,54 @@
-// Entrada 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🌿 Jardín Secreto - Inicializando aplicación...');
+    if (typeof cargarCarritoStorage === 'function') {
+        cargarCarritoStorage();
+    }
     
-    cargarCarritoStorage();
-    inicializarPagina();
-    inicializarEventos();
-    inicializarEfectosCreativos();
-    actualizarContadorCarrito();
-    manejarParametrosURL();
-    
-    console.log('✅ Jardín Secreto - Aplicación inicializada correctamente');
-});
-
-function manejarParametrosURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const accion = urlParams.get('accion');
-    
-    if (accion === 'verCarrito') {
-        if (!window.location.pathname.includes('carrito.html')) {
-            mostrarNotificacion('Redirigiendo al carrito...', 'info');
-            setTimeout(() => {
-                window.location.href = 'paginas/carrito.html';
-            }, 1000);
+    if (document.getElementById('catalogo-container')) {
+        if (typeof renderizarCatalogo === 'function' && typeof productos !== 'undefined') {
+            renderizarCatalogo(productos);
+            
+            const botonesFiltro = document.querySelectorAll('.filtro-btn');
+            botonesFiltro.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    botonesFiltro.forEach(b => b.classList.remove('activo'));
+                    btn.classList.add('activo');
+                    const filtro = btn.dataset.filtro;
+                    if (typeof filtrarPorDificultad === 'function') {
+                        filtrarPorDificultad(filtro);
+                    }
+                });
+            });
+            
+            const buscador = document.getElementById('buscador');
+            if (buscador && typeof buscarProductos === 'function') {
+                buscador.addEventListener('input', (e) => {
+                    buscarProductos(e.target.value);
+                });
+            }
         }
     }
-}
-
-function formatearPrecio(precio) {
-    return `S/ ${precio.toFixed(2)}`;
-}
-
-function obtenerTotalProductos() {
-    return productos.length;
-}
-
-function obtenerPrecioPromedio() {
-    if (productos.length === 0) return 0;
-    const suma = productos.reduce((total, producto) => total + producto.precio, 0);
-    return suma / productos.length;
-}
-
-window.jardinSecreto = {
-    productos: productos,
-    carrito: carrito,
-    formatearPrecio: formatearPrecio,
-    obtenerTotalProductos: obtenerTotalProductos,
-    obtenerPrecioPromedio: obtenerPrecioPromedio,
-    version: '1.0.0'
-};
-
-console.log('🌱 Jardín Secreto v1.0.0');
-console.log(`📦 Total de productos disponibles: ${obtenerTotalProductos()}`);
-console.log(`💰 Precio promedio: ${formatearPrecio(obtenerPrecioPromedio())}`);
-console.log('💡 Para ver más opciones, escribe: window.jardinSecreto');
+    
+    if (document.getElementById('destacados-container')) {
+        if (typeof renderizarDestacados === 'function') {
+            renderizarDestacados();
+        }
+    }
+    
+    if (document.getElementById('items-carrito')) {
+        if (typeof actualizarVistaCarrito === 'function') {
+            actualizarVistaCarrito();
+        }
+    }
+    
+    if (document.getElementById('contactoForm')) {
+        if (typeof inicializarValidaciones === 'function') {
+            inicializarValidaciones();
+        }
+    }
+    
+    if (typeof actualizarContadorCarrito === 'function') {
+        actualizarContadorCarrito();
+    }
+    
+    console.log('🌸 Jardín Secreto - Tienda lista para florecer 🌸');
+});

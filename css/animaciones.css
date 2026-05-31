@@ -9,15 +9,28 @@
     }
 }
 
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .banner-principal {
     animation: fadeInUp 0.8s ease;
-}
-
-.tarjeta-producto {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tarjeta-producto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }

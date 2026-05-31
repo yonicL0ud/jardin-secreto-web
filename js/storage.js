@@ -1,27 +1,12 @@
 function guardarCarrito() {
-
-    localStorage.setItem(
-        "jardinSecretoCarrito",
-        JSON.stringify(carrito)
-    );
+    localStorage.setItem('jardinSecretoCarrito', JSON.stringify(carrito));
 }
 
 function cargarCarritoStorage() {
-
-    const datos = localStorage.getItem("jardinSecretoCarrito");
-
-    if (datos) {
-
-        carrito = JSON.parse(datos);
-
-    } else {
-
-        carrito = [];
-    }
-
-    actualizarContadorCarrito();
-
-    if (document.getElementById("items-carrito")) {
+    const carritoGuardado = localStorage.getItem('jardinSecretoCarrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+        actualizarContadorCarrito();
         actualizarVistaCarrito();
     }
 }

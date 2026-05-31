@@ -1,56 +1,62 @@
 const productos = [
     {
         id: 1,
-        nombre: "Monstera Deliciosa",
-        precio: 89.00,
-        imagen: "../img/monstera.jpg", 
-        imagenHome: "img/monstera.jpg", 
-        descripcion: "Hermosa planta de hojas grandes y perforadas, ideal para salones iluminados.",
-        dificultad: "facil"
+        nombre: "Monstera deliciosa",
+        precio: 89,
+        imagen: "../img/monstera.jpg",
+        imagenHome: "img/monstera.jpg",
+        categoria: "interior",
+        descripcion: "Planta de hojas grandes y perforadas, ideal para interiores luminosos",
+        dificultad: "fácil"
     },
     {
         id: 2,
-        nombre: "Ficus Lyrata",
-        precio: 120.00,
-        imagen: "../img/ficus.jpg",
-        imagenHome: "img/ficus.jpg",
-        descripcion: "Elegante árbol de hojas con forma de lira. Aporta gran altura y diseño.",
-        dificultad: "moderado"
+        nombre: "Pack Suculentas",
+        precio: 35,
+        imagen: "../img/suculentas.jpg",
+        imagenHome: "img/suculentas.jpg",
+        categoria: "suculentas",
+        descripcion: "Set de 6 suculentas mini en macetas de cerámica",
+        dificultad: "fácil"
     },
     {
         id: 3,
-        nombre: "Sansevieria Lengua",
-        precio: 45.00,
-        imagen: "../img/sansevieria.jpg",
-        imagenHome: "img/sansevieria.jpg",
-        descripcion: "Purifica el aire de forma eficiente y sobrevive a casi cualquier espacio.",
-        dificultad: "facil"
+        nombre: "Maceta Macramé",
+        precio: 45,
+        imagen: "../img/macrame.jpg",
+        imagenHome: "img/macrame.jpg",
+        categoria: "decoración",
+        descripcion: "Colgante artesanal de macramé para plantas",
+        dificultad: "fácil"
     },
     {
         id: 4,
-        nombre: "Pothos de Oro",
-        precio: 35.00,
-        imagen: "../img/pothos.jpg",
-        imagenHome: "img/pothos.jpg",
-        descripcion: "Planta colgante de rápido crecimiento con sutiles destellos dorados.",
-        dificultad: "facil"
-    },
-    {
-        id: 5,
-        nombre: "Calathea Orbifolia",
-        precio: 75.00,
-        imagen: "../img/calathea.jpg",
-        imagenHome: "img/calathea.jpg",
-        descripcion: "Hojas redondas con elegantes rayas plateadas. Requiere humedad ambiental.",
+        nombre: "Helecho Cuero",
+        precio: 65,
+        imagen: "../img/helecho.jpg",
+        imagenHome: "img/helecho.jpg",
+        categoria: "interior",
+        descripcion: "Helecho que purifica el aire, necesita humedad constante",
         dificultad: "moderado"
     },
     {
+        id: 5,
+        nombre: "Kit Herramientas",
+        precio: 29,
+        imagen: "../img/kit.jpg",
+        imagenHome: "img/kit.jpg",
+        categoria: "accesorios",
+        descripcion: "Mini pala, rastrillo, tijeras y pulverizador",
+        dificultad: "fácil"
+    },
+    {
         id: 6,
-        nombre: "Suculenta Echeveria",
-        precio: 20.00,
-        imagen: "../img/suculenta.jpg",
-        imagenHome: "img/suculenta.jpg",
-        descripcion: "Pequeña planta en forma de roseta perfecta para escritorios y ventanas.",
-        dificultad: "facil"
+        nombre: "Sansevieria",
+        precio: 55,
+        imagen: "../img/sansevieria.jpg",
+        imagenHome:"img/sansevieria.jpg",
+        categoria: "interior",
+        descripcion: "Lengua de suegra, resistente y purificadora",
+        dificultad: "fácil"
     }
 ];
