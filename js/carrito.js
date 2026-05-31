@@ -19,7 +19,6 @@ function agregarAlCarrito(id) {
 
     guardarCarrito();
     actualizarContadorCarrito();
-    alert(producto.nombre + " agregado al carrito");
 }
 
 function actualizarContadorCarrito() {
