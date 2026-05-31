@@ -16,7 +16,7 @@ function renderizarCatalogo(productosArray) {
             <img src="${p.imagen}" alt="${p.nombre}">
             <h3>${p.nombre}</h3>
             <p>${p.descripcion}</p>
-            <p class="precio">S/ ${p.precio}</p>
+            <p class="precio">S/ ${p.precio.toFixed(2)}</p>
             <button class="btn-agregar" data-id="${p.id}">Agregar 🛒</button>
         `;
         contenedor.appendChild(tarjeta);
@@ -42,9 +42,9 @@ function renderizarDestacados() {
         const tarjeta = document.createElement('div');
         tarjeta.className = 'producto-tarjeta';
         tarjeta.innerHTML = `
-            <img src="${p.imagenHome}" alt="${p.nombre}">
+            <img src="${p.imagen}" alt="${p.nombre}">
             <h3>${p.nombre}</h3>
-            <p class="precio">S/ ${p.precio}</p>
+            <p class="precio">S/ ${p.precio.toFixed(2)}</p>
             <button class="btn-agregar" data-id="${p.id}">Agregar 🛒</button>
         `;
         contenedor.appendChild(tarjeta);
