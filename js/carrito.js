@@ -61,8 +61,9 @@ function calcularTotalItems() {
 
 function actualizarContadorCarrito() {
     const contadores = document.querySelectorAll(".contador-carrito");
+    const totalItems = calcularTotalItems();
     for (let i = 0; i < contadores.length; i++) {
-        contadores[i].textContent = calcularTotalItems();
+        contadores[i].textContent = totalItems;
     }
 }
 
@@ -82,21 +83,22 @@ function actualizarVistaCarrito() {
     contenedor.innerHTML = "";
     for (let i = 0; i < carrito.length; i++) {
         const item = carrito[i];
+        const precioTotal = item.precio * item.cantidad;
         contenedor.innerHTML += `
-            <div class="item-carrito" style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px; margin-bottom: 10px; border-radius: 12px;">
-                <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px; margin-bottom: 10px; border-radius: 12px;">
+                <div style="flex:2;">
                     <h3 style="margin:0;">${item.nombre}</h3>
-                    <p style="margin:5px 0;">Precio: S/ ${item.precio.toFixed(2)}</p>
+                    <p style="margin:5px 0;">S/ ${item.precio.toFixed(2)} c/u</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <button onclick="actualizarCantidad(${item.id}, ${item.cantidad - 1})" style="background: var(--verde-primario); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">-</button>
-                    <span style="font-weight: bold;">${item.cantidad}</span>
-                    <button onclick="actualizarCantidad(${item.id}, ${item.cantidad + 1})" style="background: var(--verde-primario); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">+</button>
+                    <button onclick="actualizarCantidad(${item.id}, ${item.cantidad - 1})" style="background: #2D6A4F; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">-</button>
+                    <span style="font-weight: bold; min-width: 30px; text-align: center;">${item.cantidad}</span>
+                    <button onclick="actualizarCantidad(${item.id}, ${item.cantidad + 1})" style="background: #2D6A4F; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer;">+</button>
                 </div>
-                <div>
-                    <p style="margin:0; font-weight: bold;">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+                <div style="min-width: 100px; text-align: right;">
+                    <p style="margin:0; font-weight: bold;">S/ ${precioTotal.toFixed(2)}</p>
                 </div>
-                <button onclick="eliminarDelCarrito(${item.id})" style="background: red; color: white; border: none; padding: 5px 10px; border-radius: 8px; cursor: pointer;">Eliminar</button>
+                <button onclick="eliminarDelCarrito(${item.id})" style="background: #e74c3c; color: white; border: none; padding: 5px 12px; border-radius: 8px; cursor: pointer; margin-left: 10px;">Eliminar</button>
             </div>
         `;
     }
@@ -125,10 +127,12 @@ function cargarCarritoStorage() {
         carrito = JSON.parse(guardado);
         actualizarContadorCarrito();
         actualizarVistaCarrito();
+    } else {
+        carrito = [];
     }
 }
 
-// Esto es para que al cargar la página del carrito se muestren los productos
+// Inicializar cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
     cargarCarritoStorage();
 });
