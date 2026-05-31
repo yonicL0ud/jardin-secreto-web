@@ -27,13 +27,34 @@ function renderizarDestacados(listaProductos, contenedor) {
         tarjeta.innerHTML = `
             <img src="${producto.imagenHome}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
-            <p>${producto.descripcion}</p>
+            <p>${producto.descripcion.substring(0, 50)}${producto.descripcion.length > 50 ? '...' : ''}</p>
             <div style="margin-top: 15px; font-weight: bold; color: var(--verde-primario);">
                 S/ ${producto.precio.toFixed(2)}
             </div>
-            <button class="btn-agregar" data-id="${producto.id}" style="margin-top: 10px; width: 100%;">
-                Agregar al carrito
-            </button>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button class="btn-detalle" data-id="${producto.id}" style="
+                    flex: 1;
+                    background-color: transparent;
+                    color: var(--verde-primario);
+                    border: 2px solid var(--verde-primario);
+                    padding: 8px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: 0.3s;
+                ">🔍 Ver detalles</button>
+                <button class="btn-agregar" data-id="${producto.id}" style="
+                    flex: 1;
+                    background-color: var(--verde-primario);
+                    color: white;
+                    border: none;
+                    padding: 8px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: 0.3s;
+                ">🛒 Agregar</button>
+            </div>
         `;
         contenedor.appendChild(tarjeta);
     });
@@ -63,13 +84,34 @@ function renderizarCatalogo(listaProductos, contenedor) {
                 Cuidado: ${producto.dificultad}
             </span>
             <h3 style="margin: 10px 0;">${producto.nombre}</h3>
-            <p>${producto.descripcion}</p>
+            <p>${producto.descripcion.substring(0, 60)}${producto.descripcion.length > 60 ? '...' : ''}</p>
             <div style="margin-top: 15px; font-weight: bold; color: var(--verde-primario); font-size: 18px;">
                 S/ ${producto.precio.toFixed(2)}
             </div>
-            <button class="btn-agregar" data-id="${producto.id}" style="margin-top: 10px; width: 100%;">
-                Agregar al carrito
-            </button>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button class="btn-detalle" data-id="${producto.id}" style="
+                    flex: 1;
+                    background-color: transparent;
+                    color: var(--verde-primario);
+                    border: 2px solid var(--verde-primario);
+                    padding: 8px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: 0.3s;
+                ">🔍 Ver detalles</button>
+                <button class="btn-agregar" data-id="${producto.id}" style="
+                    flex: 1;
+                    background-color: var(--verde-primario);
+                    color: white;
+                    border: none;
+                    padding: 8px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: 0.3s;
+                ">🛒 Agregar</button>
+            </div>
         `;
         contenedor.appendChild(tarjeta);
     });

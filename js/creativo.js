@@ -5,7 +5,7 @@ function inicializarEfectosCreativos() {
     inicializarContadorVisitas();
     efectoEscrituraBanner();
     inicializarModoOscuro();
-    inicializarGaleriaInteractiva();
+    configurarDelegacionEventosDetalle();
 }
 
 function agregarEfectoTarjetas() {
@@ -238,50 +238,232 @@ function inicializarModoOscuro() {
     document.head.appendChild(estilosModoOscuro);
 }
 
-function inicializarGaleriaInteractiva() {
-    const todasImagenes = document.querySelectorAll('.producto-tarjeta img');
-    todasImagenes.forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', () => {
-            abrirModalImagen(img.src, img.alt);
-        });
+function configurarDelegacionEventosDetalle() {
+    document.body.addEventListener('click', (e) => {
+        const btnDetalle = e.target.closest('.btn-detalle');
+        const imagenProducto = e.target.closest('.producto-tarjeta img');
+        
+        if (btnDetalle) {
+            const id = parseInt(btnDetalle.getAttribute('data-id'));
+            const producto = productos.find(p => p.id === id);
+            if (producto) {
+                abrirModalDetalle(producto);
+            }
+        } else if (imagenProducto) {
+            const tarjeta = imagenProducto.closest('.producto-tarjeta');
+            const btn = tarjeta?.querySelector('.btn-detalle');
+            if (btn) {
+                const id = parseInt(btn.getAttribute('data-id'));
+                const producto = productos.find(p => p.id === id);
+                if (producto) {
+                    abrirModalDetalle(producto);
+                }
+            }
+        }
     });
 }
 
-function abrirModalImagen(src, alt) {
+function abrirModalDetalle(producto) {
+    const modalExistente = document.querySelector('.modal-detalle');
+    if (modalExistente) {
+        modalExistente.remove();
+    }
+    
     const modal = document.createElement('div');
+    modal.className = 'modal-detalle';
     modal.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.9);
+        background-color: rgba(0,0,0,0.85);
         z-index: 10000;
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
         animation: fadeInUp 0.3s ease;
+        cursor: pointer;
     `;
     
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = alt;
-    img.style.cssText = `
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background-color: var(--crema);
+        border-radius: 20px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 85vh;
+        overflow-y: auto;
+        position: relative;
+        animation: fadeInUp 0.3s ease;
+        cursor: default;
     `;
     
-    modal.appendChild(img);
-    modal.addEventListener('click', () => {
+    const dificultadIcono = producto.dificultad === 'facil' ? '🌱' : '🪴';
+    const dificultadTexto = producto.dificultad === 'facil' ? 'Cuidado fácil' : 'Cuidado moderado';
+    const dificultadColor = producto.dificultad === 'facil' ? '#40916C' : '#D4A373';
+    
+    modalContent.innerHTML = `
+        <button class="modal-cerrar" style="
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--verde-primario);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 10;
+        ">✕</button>
+        
+        <div style="padding: 25px;">
+            <img src="${producto.imagen || producto.imagenHome}" 
+                 alt="${producto.nombre}"
+                 style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px; margin-bottom: 20px;">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="color: var(--verde-primario); margin: 0; font-size: 24px;">${producto.nombre}</h2>
+                <span style="background-color: ${dificultadColor}; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+                    ${dificultadIcono} ${dificultadTexto}
+                </span>
+            </div>
+            
+            <p style="color: var(--texto-oscuro); line-height: 1.6; margin-bottom: 20px;">
+                ${producto.descripcion}
+            </p>
+            
+            <div style="background-color: white; border-radius: 12px; padding: 15px; margin: 20px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <p style="margin: 0; color: #666; font-size: 14px;">Precio</p>
+                        <p style="margin: 5px 0 0 0; font-size: 28px; font-weight: bold; color: var(--verde-primario);">
+                            S/ ${producto.precio.toFixed(2)}
+                        </p>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #666; font-size: 14px;">Stock</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: var(--verde-primario);">
+                            ✅ Disponible
+                        </p>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #666; font-size: 14px;">Envío</p>
+                        <p style="margin: 5px 0 0 0; font-size: 16px; color: var(--verde-primario);">
+                            🚚 A domicilio
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <button class="btn-agregar-modal" data-id="${producto.id}" style="
+                    flex: 2;
+                    background-color: var(--verde-primario);
+                    color: white;
+                    border: none;
+                    padding: 14px;
+                    border-radius: 12px;
+                    font-weight: bold;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: transform 0.2s ease;
+                ">🛒 Agregar al carrito</button>
+                
+                <button class="btn-cerrar-modal" style="
+                    flex: 1;
+                    background-color: transparent;
+                    color: var(--verde-primario);
+                    border: 2px solid var(--verde-primario);
+                    padding: 14px;
+                    border-radius: 12px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                ">Seguir comprando</button>
+            </div>
+        </div>
+    `;
+    
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+    
+    const cerrarBtn = modalContent.querySelector('.modal-cerrar');
+    const cerrarModalBtn = modalContent.querySelector('.btn-cerrar-modal');
+    const agregarBtn = modalContent.querySelector('.btn-agregar-modal');
+    
+    const cerrarModal = () => {
         modal.style.opacity = '0';
         setTimeout(() => modal.remove(), 300);
+    };
+    
+    cerrarBtn.addEventListener('click', cerrarModal);
+    cerrarModalBtn.addEventListener('click', cerrarModal);
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) cerrarModal();
     });
     
-    document.body.appendChild(modal);
+    if (agregarBtn) {
+        agregarBtn.addEventListener('click', () => {
+            agregarAlCarrito(producto.id);
+            cerrarModal();
+        });
+    }
+    
+    const botones = modalContent.querySelectorAll('button');
+    botones.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            btn.style.transform = 'scale(1.02)';
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'scale(1)';
+        });
+    });
+}
+
+function abrirModalImagen(src, alt) {
+    const producto = productos.find(p => p.imagen === src || p.imagenHome === src);
+    if (producto) {
+        abrirModalDetalle(producto);
+    } else {
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: fadeInUp 0.3s ease;
+        `;
+        
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = alt;
+        img.style.cssText = `
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        `;
+        
+        modal.appendChild(img);
+        modal.addEventListener('click', () => {
+            modal.style.opacity = '0';
+            setTimeout(() => modal.remove(), 300);
+        });
+        
+        document.body.appendChild(modal);
+    }
 }
 
 function mostrarConfeti() {
