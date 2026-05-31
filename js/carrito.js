@@ -131,8 +131,3 @@ function cargarCarritoStorage() {
         carrito = [];
     }
 }
-
-// Inicializar cuando se carga la página
-document.addEventListener('DOMContentLoaded', function() {
-    cargarCarritoStorage();
-});
