@@ -122,3 +122,15 @@ function vaciarCarrito() {
     actualizarVistaCarrito();
     actualizarContadorCarrito();
 }
+function guardarCarrito() {
+    localStorage.setItem('jardinSecretoCarrito', JSON.stringify(carrito));
+}
+
+function cargarCarritoStorage() {
+    const guardado = localStorage.getItem('jardinSecretoCarrito');
+    if (guardado) {
+        carrito = JSON.parse(guardado);
+        actualizarContadorCarrito();
+        actualizarVistaCarrito();
+    }
+}
