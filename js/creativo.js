@@ -33,7 +33,7 @@ function mostrarBienvenida() {
             <div class="bienvenida-contenido">
                 <span class="bienvenida-emoji">${emoji}</span>
                 <div class="bienvenida-texto">
-                    <strong>${saludo}, plant lover! 🌸</strong>
+                    <strong>${saludo}, personita que le gustan las plantas! 🌸</strong>
                     <p>${mensaje}</p>
                 </div>
                 <button class="bienvenida-cerrar">✖</button>
