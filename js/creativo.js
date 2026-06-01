@@ -1,4 +1,3 @@
-// ========== MENSAJE DE BIENVENIDA PERSONALIZADO ==========
 function mostrarBienvenida() {
     const hora = new Date().getHours();
     let saludo = '';
