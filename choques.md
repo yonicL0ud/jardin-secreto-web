@@ -1,16 +1,5 @@
 # Choques CSS detectados - Jardín Secreto
 
-## Fecha: [PONER FECHA ACTUAL]
-
-## Integrantes del equipo
-- [Nombre 1] - Integrador
-- [Nombre 2] - Navegante  
-- [Nombre 3] - Maquetador
-- [Nombre 4] - Formularista
-- [Nombre 5] - Auditor
-
----
-
 ### Diferencia 1: Tipografía general
 - **S13 (CSS puro)**: Fuente Quicksand en todo el sitio
 - **S14 (con Bootstrap)**: Bootstrap aplicó su fuente system-ui
@@ -42,6 +31,3 @@
 - **Aceptadas**: Tipografía, márgenes, navbar
 - **Sobrescritas**: Botones (usamos clase btn-success de Bootstrap)
 - **Eliminadas (comentadas)**: CSS artesanal del header (~40 líneas)
-
-## Nota adicional
-El orden de los `<link>` en el `<head>` es: Bootstrap PRIMERO, luego nuestro CSS. Esto permite que nuestro CSS pueda sobrescribir a Bootstrap cuando sea necesario.
