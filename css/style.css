@@ -16,4 +16,140 @@ body {
     background-color: var(--crema);
     color: var(--texto-oscuro);
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+.btn-success {
+    background-color: var(--verde-primario);
+    border-color: var(--verde-primario);
+}
+
+.btn-success:hover {
+    background-color: var(--verde-claro);
+    border-color: var(--verde-claro);
+}
+
+.btn-success:active,
+.btn-success:focus {
+    background-color: var(--verde-primario);
+    border-color: var(--verde-primario);
+    box-shadow: 0 0 0 0.25rem rgba(45, 106, 79, 0.25);
+}
+
+/* Ajuste para las tarjetas de producto */
+.tarjeta-producto {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contador-carrito {
+    background-color: var(--rosa-flor);
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    margin-left: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.banner-principal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(45, 106, 79, 0.6);
+    border-radius: 0;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.filtros {
+    margin-top: 20px;
+}
+
+.carrito-icono {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 30px;
+    transition: var(--transicion);
+    color: white;
+}
+
+.carrito-icono:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+footer {
+    margin-top: 3rem;
+}
+
+.grid-destacados {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .grid-destacados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-destacados {
+        grid-template-columns: 1fr;
+    }
+}
+
+.error-mensaje {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--verde-primario);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 30px;
+    animation: slideInRight 0.3s ease;
+    z-index: 1000;
+}
+
+.mensaje-exito {
+    background: var(--verde-primario);
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    animation: slideInDown 0.5s ease;
+}
+
+.container,
+.container-fluid,
+.row,
+.col-* 
+
+.h-100 {
+    height: 100%;
 }
