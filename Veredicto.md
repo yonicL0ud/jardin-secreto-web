@@ -46,11 +46,3 @@
 **Conclusión:** 
 - Conclusión: Para ESTE proyecto específico (e-commerce de plantas con 6 productos, carrito con localStorage, e identidad visual muy definida), recomendamos CSS puro. Bootstrap es excelente para prototipos rápidos o equipos que no dominan CSS, pero para un producto con personalización fuerte, el CSS artesanal da más control y menor dependencia externa.
 
----
-
-## Firma del equipo
-- [Poul Fernando lima chamorro] - Rol: Integrador/a
-- [Shiomara Pilco Caceres] - Rol: Navegante
-- [Nicol Mirian Mamani Canasa] - Rol: Maquetador/a
-- [Brenda Adeli] - Rol: Formularista
-- [Mayte alexandra] - Rol: Auditor/a
