@@ -5,21 +5,27 @@ function renderizarCatalogo(productosArray) {
     if (!contenedor) return;
     
     if (productosArray.length === 0) {
-        contenedor.innerHTML = '<p class="sin-resultados" style="text-align:center; padding:2rem;">🌿 No encontramos plantas con ese filtro</p>';
+        contenedor.innerHTML = '<p class="sin-resultados text-center p-4">🌿 No encontramos plantas con ese filtro</p>';
         return;
     }
     
+    // Cada producto va dentro de una columna de Bootstrap
     contenedor.innerHTML = productosArray.map(producto => `
-        <article class="tarjeta-producto">
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p class="descripcion">${producto.descripcion}</p>
-            <p class="dificultad">🏷️ Cuidado: ${producto.dificultad}</p>
-            <p class="precio">S/ ${producto.precio}</p>
-            <button class="btn-agregar" data-id="${producto.id}">Agregar al carrito 🛒</button>
-        </article>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="tarjeta-producto h-100">
+                <img src="${producto.imagen}" class="img-fluid" alt="${producto.nombre}" style="height: 200px; object-fit: cover; width: 100%;">
+                <div class="p-3">
+                    <h3>${producto.nombre}</h3>
+                    <p class="descripcion text-muted small">${producto.descripcion}</p>
+                    <p class="dificultad">🏷️ Cuidado: ${producto.dificultad}</p>
+                    <p class="precio text-success fw-bold fs-4">S/ ${producto.precio}</p>
+                    <button class="btn btn-success w-100 btn-agregar" data-id="${producto.id}">Agregar al carrito 🛒</button>
+                </div>
+            </div>
+        </div>
     `).join('');
     
+    // Mantener la funcionalidad de los botones
     document.querySelectorAll('.btn-agregar').forEach(btn => {
         btn.addEventListener('click', () => {
             agregarAlCarrito(parseInt(btn.dataset.id));

@@ -1,4 +1,7 @@
-/* HEADER con FLEXBOX */
+/* ============================================ */
+/* HEADER COMENTADO - REEMPLAZADO POR BOOTSTRAP */
+/* ============================================ */
+/*
 header {
     display: flex;
     justify-content: space-between;
@@ -27,7 +30,6 @@ header {
     font-size: 1.5rem;
 }
 
-/* NAVEGACIÓN con FLEXBOX */
 nav ul {
     display: flex;
     gap: 2rem;
@@ -45,7 +47,6 @@ nav a:hover {
     color: var(--verde-primario);
 }
 
-/* CARRITO ICONO */
 .carrito-icono {
     display: flex;
     align-items: center;
@@ -68,12 +69,32 @@ nav a:hover {
     font-size: 0.8rem;
     font-weight: bold;
 }
+*/
 
-/* FOOTER */
+/* FOOTER - se mantiene igual */
 footer {
     background-color: var(--verde-primario);
     color: white;
     text-align: center;
     padding: 2rem;
     margin-top: 3rem;
+}
+
+/* Ajuste para navbar de Bootstrap */
+.carrito-icono {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 30px;
+    transition: var(--transicion);
+}
+
+.carrito-icono:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+body {
+    overflow-x: hidden;
 }

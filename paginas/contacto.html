@@ -4,59 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jardín Secreto | Contacto</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Tus CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../img/logo.svg" alt="Logo Jardín Secreto">
-            <h1>Jardín Secreto</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
+    <!-- HEADER CON BOOTSTRAP -->
+    <header style="position: sticky; top: 0; z-index: 1000;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                    <img src="../img/logo.svg" alt="Logo" width="40" height="40" class="me-2">
+                    <span class="fw-bold">Jardín Secreto</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="catalogo.html">Catálogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+                    <div class="carrito-icono ms-3" onclick="window.location.href='carrito.html'" style="cursor: pointer;">
+                        <span>🛒</span>
+                        <span class="contador-carrito" id="contador-header" style="background-color: #F9A8D4; border-radius: 50%; padding: 2px 8px; margin-left: 5px;">0</span>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <div class="carrito-icono" onclick="window.location.href='carrito.html'">
-            <span>🛒</span>
-            <span class="contador-carrito" id="contador-header">0</span>
-        </div>
     </header>
 
     <main>
-        <section class="formulario-contacto">
-            <h2>Contáctanos 🌸</h2>
-            <form id="contactoForm">
-                <div class="campo">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre">
-                    <small class="error-mensaje" id="error-nombre"></small>
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="card shadow border-0 rounded-4">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="card-title text-center text-success mb-4">Contáctanos 🌸</h2>
+                            
+                            <form id="contactoForm">
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-6">
+                                        <label for="nombre" class="form-label">Nombre completo</label>
+                                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                                        <small class="text-danger error-mensaje" id="error-nombre"></small>
+                                    </div>
+                                    
+                                    <div class="col-12 col-md-6">
+                                        <label for="email" class="form-label">Correo electrónico</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                        <small class="text-danger error-mensaje" id="error-email"></small>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <label for="asunto" class="form-label">Asunto</label>
+                                        <select id="asunto" name="asunto" class="form-select">
+                                            <option value="consulta">Consulta sobre productos</option>
+                                            <option value="pedido">Sobre mi pedido</option>
+                                            <option value="sugerencia">Sugerencia</option>
+                                            <option value="reclamo">Reclamo</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <label for="mensaje" class="form-label">Mensaje</label>
+                                        <textarea id="mensaje" name="mensaje" class="form-control" rows="5" required></textarea>
+                                        <small class="text-danger error-mensaje" id="error-mensaje"></small>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-success w-100 py-2">
+                                            Enviar mensaje ✨
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="campo">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email">
-                    <small class="error-mensaje" id="error-email"></small>
-                </div>
-                
-                <div class="campo">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" rows="5"></textarea>
-                    <small class="error-mensaje" id="error-mensaje"></small>
-                </div>
-                
-                <button type="submit" class="btn-enviar">Enviar mensaje</button>
-            </form>
-        </section>
+            </div>
+        </div>
     </main>
 
     <footer>
         <p>© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Tus JS -->
     <script src="../js/validaciones.js"></script>
     <script src="../js/main.js"></script>
 </body>
