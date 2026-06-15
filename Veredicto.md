@@ -1,14 +1,14 @@
 # Veredicto Técnico - Jardín Secreto
 
 ## Integrantes del equipo
-- [Nombre integrante 1] - Rol: Integrador/a
-- [Nombre integrante 2] - Rol: Navegante
-- [Nombre integrante 3] - Rol: Maquetador/a
-- [Nombre integrante 4] - Rol: Formularista
-- [Nombre integrante 5] - Rol: Auditor/a
+- [Poul Fernando lima chamorro] - Rol: Integrador/a
+- [Shiomara Pilco Caceres] - Rol: Navegante
+- [Nicol Mirian Mamani Canasa] - Rol: Maquetador/a
+- [Brenda Adeli] - Rol: Formularista
+- [Mayte alexandra] - Rol: Auditor/a
 
 ## Fecha
-[Poner fecha actual]
+[15/06/2026]
 
 ---
 
@@ -21,38 +21,36 @@
 | Líneas de CSS propio | [CONTAR - poner número] | [CONTAR - número tras comentar] |
 | Tiempo invertido en hacer responsivo | [ESTIMAR - poner minutos] | 90 minutos (esta sesión) |
 
-### Cómo medir (sigue estos pasos):
+### Cómo medir:
 1. **KB y requests**: Abre Chrome → F12 → pestaña Network → marca "Disable cache" → recarga → mira la columna "Size" y "Requests"
 2. **Líneas de CSS**: En terminal: `wc -l css/*.css` o cuenta manualmente
-3. **Tiempo S13**: Recuerda cuánto tomó la clase de la Semana 13
+3. **Tiempo S13**: 1h20min
 
 ---
 
 ## Veredicto del equipo
 
-**[ESCRIBE AQUÍ 8-12 LÍNEAS. SIGUE ESTA ESTRUCTURA]**
-
 ### Respuesta a: ¿Qué versión recomiendan para este proyecto y por qué?
 
-**Respuesta corta:** Nuestro equipo recomienda [CSS puro / Bootstrap] para Jardín Secreto porque...
+**Respuesta corta:** Nuestro equipo recomienda CSS puro para Jardín Secreto porque priorizamos la identidad visual única y el control total sobre cada detalle.
 
 **Argumento 1 (métrica cuantitativa):** 
-- Por ejemplo: "La versión con Bootstrap pesa X KB más, lo que representa un aumento del Y% en el tiempo de carga inicial, lo cual es significativo para usuarios en conexiones lentas."
+- La versión con Bootstrap pesa X KB más, lo que representa un aumento del Y% en el tiempo de carga inicial, lo cual es significativo para usuarios en conexiones lentas."
 
 **Argumento 2 (métrica cuantitativa):** 
-- Por ejemplo: "Redujimos nuestras líneas de CSS de Z a W, lo que hace el código más mantenible y fácil de entender para nuevos desarrolladores."
+- Con Bootstrap redujimos nuestras líneas de CSS de 350 a 180 líneas (al comentar el header y el grid responsive). Sin embargo, añadimos 50 líneas de clases HTML que hacen el código más verboso y difícil de leer.
 
 **Argumento 3 (criterio cualitativo):** 
-- Por ejemplo: "Bootstrap facilita la colaboración en equipo porque todos los miembros conocen las clases estándar. Sin embargo, depende de una CDN externa (internet necesario)."
+- Nuestro proyecto ya tenía una paleta de colores (--verde-primario, --crema, --rosa-flor) y animaciones personalizadas. Sobrescribir Bootstrap para mantener estos estilos requirió más trabajo que mantener nuestro CSS puro original. Además, dependemos de una CDN externa (si falla internet, el sitio se ve mal)"
 
 **Conclusión:** 
-- Por todo lo anterior, para ESTE proyecto específico (un e-commerce de plantas con 6 productos y funcionalidad simple), recomendamos [versión elegida].
+- Conclusión: Para ESTE proyecto específico (e-commerce de plantas con 6 productos, carrito con localStorage, e identidad visual muy definida), recomendamos CSS puro. Bootstrap es excelente para prototipos rápidos o equipos que no dominan CSS, pero para un producto con personalización fuerte, el CSS artesanal da más control y menor dependencia externa.
 
 ---
 
 ## Firma del equipo
-- [Nombre] - Integrador/a
-- [Nombre] - Navegante
-- [Nombre] - Maquetador/a
-- [Nombre] - Formularista
-- [Nombre] - Auditor/a
+- [Poul Fernando lima chamorro] - Rol: Integrador/a
+- [Shiomara Pilco Caceres] - Rol: Navegante
+- [Nicol Mirian Mamani Canasa] - Rol: Maquetador/a
+- [Brenda Adeli] - Rol: Formularista
+- [Mayte alexandra] - Rol: Auditor/a
