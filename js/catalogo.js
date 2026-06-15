@@ -9,7 +9,6 @@ function renderizarCatalogo(productosArray) {
         return;
     }
     
-    // Cada producto va dentro de una columna de Bootstrap
     contenedor.innerHTML = productosArray.map(producto => `
         <div class="col-12 col-md-6 col-lg-4">
             <div class="tarjeta-producto h-100">
@@ -25,7 +24,6 @@ function renderizarCatalogo(productosArray) {
         </div>
     `).join('');
     
-    // Mantener la funcionalidad de los botones
     document.querySelectorAll('.btn-agregar').forEach(btn => {
         btn.addEventListener('click', () => {
             agregarAlCarrito(parseInt(btn.dataset.id));
