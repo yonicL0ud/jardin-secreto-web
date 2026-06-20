@@ -4,26 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jardín Secreto | Catálogo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../img/logo.svg" alt="Logo Jardín Secreto">
-            <h1>Jardín Secreto</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
+    <header style="position: sticky; top: 0; z-index: 1000;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                    <img src="../img/logo.svg" alt="Logo Jardín Secreto" width="40" height="40" class="me-2">
+                    <span class="fw-bold">Jardín Secreto</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="catalogo.html">Catálogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+                    <div class="carrito-icono ms-3" onclick="window.location.href='carrito.html'" style="cursor: pointer;">
+                        <span>🛒</span>
+                        <span class="contador-carrito" id="contador-header" style="background-color: #F9A8D4; border-radius: 50%; padding: 2px 8px; margin-left: 5px;">0</span>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <div class="carrito-icono" onclick="window.location.href='carrito.html'">
-            <span>🛒</span>
-            <span class="contador-carrito" id="contador-header">0</span>
-        </div>
     </header>
 
     <main>
@@ -36,8 +52,8 @@
             </div>
         </div>
         
-        <section class="catalogo">
-            <div id="catalogo-container" class="grid-catalogo"></div>
+        <section class="catalogo container my-4">
+            <div id="catalogo-container" class="row g-4"></div>
         </section>
     </main>
 
@@ -45,6 +61,33 @@
         <p>© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
     </footer>
 
+    <!-- MODAL PARA VISTA DE DETALLE -->
+    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalNombre">Nombre producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modalImagen" src="" alt="" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <p id="modalDescripcion" class="mb-3"></p>
+                            <p id="modalCategoria" class="mb-2"><strong>Categoría:</strong></p>
+                            <p id="modalDificultad" class="mb-2"><strong>Cuidado:</strong></p>
+                            <h3 class="text-success" id="modalPrecio"></h3>
+                            <button id="modalAgregar" class="btn btn-success w-100 mt-3">Agregar al carrito 🛒</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/data.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/storage.js"></script>
