@@ -57,7 +57,7 @@ const productos = [
         id: 7,
         nombre: "Cactus Gigante",
         precio: 120,
-        imagen: "img/cactus.jpg",
+        imagen: "img/cactus.webp",
         categoria: "suculentas",
         descripcion: "Cactus de gran tamaño, perfecto para exteriores soleados",
         dificultad: "fácil"
