@@ -103,7 +103,6 @@ function actualizarVistaCarrito() {
     document.getElementById('subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
     document.getElementById('total').textContent = `S/ ${subtotal.toFixed(2)}`;
 
-    // EVENTO 1: click en botones de cantidad
     document.querySelectorAll('.btn-cantidad').forEach(btn => {
         btn.addEventListener('click', function() {
             const id = parseInt(this.dataset.id);
@@ -115,14 +114,12 @@ function actualizarVistaCarrito() {
         });
     });
 
-    // EVENTO 2: click en botones de eliminar
     document.querySelectorAll('.btn-eliminar').forEach(btn => {
         btn.addEventListener('click', function() {
             eliminarDelCarrito(parseInt(this.dataset.id));
         });
     });
 
-    // EVENTO 3: keydown (ESC para cerrar modal)
     document.addEventListener('keydown', function handlerTeclado(e) {
         if (e.key === 'Escape') {
             const modal = document.querySelector('.modal.show');
