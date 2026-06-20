@@ -1,6 +1,3 @@
-/* ============================================
-   BANNER PRINCIPAL
-   ============================================ */
 .banner-principal {
     position: relative;
     min-height: 300px;
@@ -14,9 +11,6 @@
     z-index: 1;
 }
 
-/* ============================================
-   ICONO DEL CARRITO
-   ============================================ */
 .carrito-icono {
     display: flex;
     align-items: center;
@@ -34,9 +28,6 @@
     color: white;
 }
 
-/* ============================================
-   ITEMS DEL CARRITO
-   ============================================ */
 .items-carrito {
     margin-bottom: 1.5rem;
 }
@@ -126,9 +117,6 @@
     font-size: 1.2rem;
 }
 
-/* ============================================
-   NOTIFICACIONES
-   ============================================ */
 .notificacion {
     position: fixed;
     bottom: 20px;
@@ -165,9 +153,6 @@
     opacity: 0.9;
 }
 
-/* ============================================
-   ERRORES DE FORMULARIO
-   ============================================ */
 .error-mensaje {
     font-size: 0.75rem;
     margin-top: 0.25rem;
@@ -175,9 +160,6 @@
     min-height: 1.2rem;
 }
 
-/* ============================================
-   BIENVENIDA FLOTANTE (creativo)
-   ============================================ */
 .bienvenida-flotante {
     position: fixed;
     top: 100px;
@@ -223,9 +205,6 @@
     padding: 0 0 0 8px;
 }
 
-/* ============================================
-   RESPONSIVE PARA ELEMENTOS PERSONALIZADOS
-   ============================================ */
 @media (max-width: 768px) {
     .item-carrito {
         flex-wrap: wrap;

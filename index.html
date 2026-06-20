@@ -4,33 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jardín Secreto | Inicio</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- CSS propio -->
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-    <!-- ============================================ -->
-    <!-- HEADER con Navbar Bootstrap + Hamburguesa -->
-    <!-- ============================================ -->
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-success">
             <div class="container">
-                <!-- Logo -->
+
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
                     <img src="img/logo.svg" alt="Logo Jardín Secreto" width="40" height="40" class="me-2" />
                     <span class="fw-bold">Jardín Secreto</span>
                 </a>
 
-                <!-- Botón Hamburguesa (se muestra en móvil) -->
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Menú de navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Menú colapsable -->
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -43,7 +35,7 @@
                             <a class="nav-link" href="paginas/contacto.html">Contacto</a>
                         </li>
                     </ul>
-                    <!-- Icono Carrito -->
+
                     <a class="carrito-icono ms-lg-3" href="paginas/carrito.html">
                         <span>🛒</span>
                         <span class="badge rounded-pill bg-danger" id="contador-header">0</span>
@@ -53,12 +45,8 @@
         </nav>
     </header>
 
-    <!-- ============================================ -->
-    <!-- MAIN -->
-    <!-- ============================================ -->
     <main>
 
-        <!-- BANNER PRINCIPAL con animación -->
         <section class="banner-principal py-5 text-center text-white" style="background: linear-gradient(135deg, #2D6A4F, #40916C);">
             <div class="container banner-contenido">
                 <h1 class="display-4 fw-bold">Bienvenido a Jardín Secreto</h1>
@@ -67,7 +55,6 @@
             </div>
         </section>
 
-        <!-- PRODUCTOS DESTACADOS -->
         <section class="container my-5">
             <h2 class="text-center text-success mb-4">Nuestros favoritos 🌿</h2>
             <div id="destacados-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4"></div>
@@ -75,16 +62,10 @@
 
     </main>
 
-    <!-- ============================================ -->
-    <!-- FOOTER -->
-    <!-- ============================================ -->
     <footer class="bg-success text-white text-center py-4 mt-5">
         <p class="mb-0">© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
     </footer>
 
-    <!-- ============================================ -->
-    <!-- MODAL para vista de detalle -->
-    <!-- ============================================ -->
     <div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -110,9 +91,6 @@
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- SCRIPTS -->
-    <!-- ============================================ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
     </script>
     <script src="js/data.js"></script>
