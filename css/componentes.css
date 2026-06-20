@@ -1,15 +1,64 @@
 .banner-principal {
     background-image: url('../img/banner-principal.png');
-    position: relative;
-    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    min-height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    animation: fadeInUp 0.8s ease;
+}
+
+.banner-principal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(45, 106, 79, 0.6);
 }
 
 .banner-contenido {
     position: relative;
     z-index: 1;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.banner-contenido h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: slideInDown 0.6s ease;
+}
+
+.banner-contenido p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    animation: slideInDown 0.8s ease;
+}
+
+.banner-contenido a {
+    animation: slideInDown 1s ease;
+}
+
+.btn-primario {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: white;
+    color: var(--verde-primario);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primario:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: var(--verde-primario);
 }
 
 .carrito-icono {
@@ -127,7 +176,8 @@
     padding: 1rem 1.5rem;
     border-radius: 30px;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: slideInRight 0.3s ease;
 }
 
 .mensaje-exito {
@@ -137,6 +187,7 @@
     border-radius: 12px;
     margin-bottom: 1.5rem;
     text-align: center;
+    animation: slideInDown 0.5s ease;
 }
 
 .mensaje-exito .exito-icono {
@@ -167,11 +218,12 @@
     right: 20px;
     background: white;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     padding: 16px 20px;
     z-index: 1000;
     max-width: 320px;
     border-left: 5px solid var(--rosa-flor, #F9A8D4);
+    animation: slideInRight 0.4s ease;
 }
 
 .bienvenida-contenido {
@@ -210,13 +262,11 @@
     .item-carrito {
         flex-wrap: wrap;
     }
-
     .subtotal-item {
         text-align: left;
         width: 100%;
         margin-left: 70px;
     }
-
     .bienvenida-flotante {
         top: auto;
         bottom: 20px;
@@ -232,12 +282,10 @@
         align-items: flex-start;
         gap: 0.5rem;
     }
-
     .item-carrito img {
         width: 100%;
         height: 150px;
     }
-
     .subtotal-item {
         margin-left: 0;
     }
