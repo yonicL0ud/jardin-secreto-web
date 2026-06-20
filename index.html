@@ -12,16 +12,13 @@
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-success">
             <div class="container">
-
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
                     <img src="img/logo.svg" alt="Logo Jardín Secreto" width="40" height="40" class="me-2" />
                     <span class="fw-bold">Jardín Secreto</span>
                 </a>
-
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Menú de navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -34,7 +31,6 @@
                             <a class="nav-link" href="paginas/contacto.html">Contacto</a>
                         </li>
                     </ul>
-
                     <a class="carrito-icono ms-lg-3" href="paginas/carrito.html">
                         <span>🛒</span>
                         <span class="badge rounded-pill bg-danger" id="contador-header">0</span>
@@ -45,9 +41,9 @@
     </header>
 
     <main>
-
-        <section class="banner-principal py-5 text-center text-white" style="background: linear-gradient(135deg, #2D6A4F, #40916C);">
-            <div class="container banner-contenido">
+        <section class="banner-principal" style="background-image: url('img/banner-principal.jpg'); background-size: cover; background-position: center; min-height: 350px; position: relative;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(45, 106, 79, 0.6);"></div>
+            <div class="container banner-contenido" style="position: relative; z-index: 1; text-align: center; color: white;">
                 <h1 class="display-4 fw-bold">Bienvenido a Jardín Secreto</h1>
                 <p class="lead">Descubre la magia de las plantas en tu hogar</p>
                 <a href="paginas/catalogo.html" class="btn btn-light btn-lg">Ver catálogo 🌿</a>
@@ -58,7 +54,6 @@
             <h2 class="text-center text-success mb-4">Nuestros favoritos 🌿</h2>
             <div id="destacados-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4"></div>
         </section>
-
     </main>
 
     <footer class="bg-success text-white text-center py-4 mt-5">
@@ -98,6 +93,5 @@
     <script src="js/catalogo.js"></script>
     <script src="js/creativo.js"></script>
     <script src="js/main.js"></script>
-
 </body>
 </html>
