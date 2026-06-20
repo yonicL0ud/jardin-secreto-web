@@ -7,11 +7,11 @@ Público objetivo: Personas que buscan decorar sus hogares con plantas, desde pr
 
 Integrantes y aportes
 
-Poul Fernando Lima Chamorro: Estructura, Bootstrap, navbar, carrito, localStorage
-Shiomara Pilco Caceres: Catálogo dinámico, filtros, búsqueda
-Nicol Mirian Mamani Canaza: Index, productos destacados, tarjetas, grid
-Brenda Adeli: Formulario de contacto, validaciones JS
-Mayte Alexandra: Accesibilidad, usabilidad, pruebas, correcciones
+- Poul Fernando Lima Chamorro: Estructura, Bootstrap, navbar, carrito, localStorage
+- Shiomara Janeth Pilco Caceres: Catálogo dinámico, filtros, búsqueda
+- Mirian Nicol Mamani Canaza: Index, productos destacados, tarjetas, grid
+- Brenda Adeli Antahuanaco Ticona: Formulario de contacto, validaciones JS
+- Maythee Alexandra Ramos Gallegos: Accesibilidad, usabilidad, pruebas, correcciones
 
 Declaración de autoría y uso de IA:
 Este proyecto fue desarrollado por el GRUPO B
