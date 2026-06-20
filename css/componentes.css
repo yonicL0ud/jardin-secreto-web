@@ -1,4 +1,5 @@
 .banner-principal {
+    background-image: url('../img/banner-principal.jpg');
     position: relative;
     min-height: 300px;
     display: flex;
