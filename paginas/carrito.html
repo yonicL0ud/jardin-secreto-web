@@ -1,56 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jardín Secreto | Carrito</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../img/logo.svg" alt="Logo Jardín Secreto">
-            <h1>Jardín Secreto</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
+
+    <!-- ============================================ -->
+    <!-- HEADER -->
+    <!-- ============================================ -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                    <img src="../img/logo.svg" alt="Logo Jardín Secreto" width="40" height="40" class="me-2" />
+                    <span class="fw-bold">Jardín Secreto</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    </ul>
+                    <a class="carrito-icono ms-lg-3" href="carrito.html">
+                        <span>🛒</span>
+                        <span class="badge rounded-pill bg-danger" id="contador-header">0</span>
+                    </a>
+                </div>
+            </div>
         </nav>
-        <div class="carrito-icono" onclick="window.location.href='carrito.html'">
-            <span>🛒</span>
-            <span class="contador-carrito" id="contador-header">0</span>
-        </div>
     </header>
 
+    <!-- ============================================ -->
+    <!-- MAIN -->
+    <!-- ============================================ -->
     <main>
-        <section class="carrito-contenido">
-            <h2>Mi Carrito 🛒</h2>
-            <div id="items-carrito" class="items-carrito"></div>
-            <div class="resumen-carrito">
-                <div class="resumen-linea">
-                    <p>Subtotal:</p>
-                    <p id="subtotal">S/ 0.00</p>
+        <section class="container my-5">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center text-success mb-4">Mi Carrito 🛒</h2>
+
+                    <!-- Items del carrito -->
+                    <div id="items-carrito" class="items-carrito"></div>
+
+                    <!-- Resumen -->
+                    <div class="border-top pt-3 mt-3">
+                        <div class="d-flex justify-content-between">
+                            <p class="fw-bold">Subtotal:</p>
+                            <p id="subtotal" class="fw-bold">S/ 0.00</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="fw-bold fs-5 text-success">Total:</p>
+                            <p id="total" class="fw-bold fs-5 text-success">S/ 0.00</p>
+                        </div>
+                        <button id="vaciar-carrito" class="btn btn-danger w-100 mt-2">Vaciar carrito</button>
+                        <a href="catalogo.html" class="btn btn-outline-success w-100 mt-2">Seguir comprando 🌿</a>
+                    </div>
                 </div>
-                <div class="resumen-linea total">
-                    <p>Total:</p>
-                    <p id="total">S/ 0.00</p>
-                </div>
-                <button id="vaciar-carrito" class="btn-secundario">Vaciar carrito</button>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-success text-white text-center py-4 mt-5">
+        <p class="mb-0">© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
     </footer>
 
+    <!-- ============================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
     <script src="../js/data.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/storage.js"></script>
     <script src="../js/main.js"></script>
+
 </body>
 </html>

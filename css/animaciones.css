@@ -20,16 +20,48 @@
     }
 }
 
-/* Aplicadas en el banner */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
 .banner-principal {
     animation: fadeInUp 0.8s ease;
 }
 
-.banner-contenido h2 {
+.banner-contenido h1 {
     animation: slideInDown 0.6s ease;
 }
 
-/* Para el mensaje de éxito del formulario */
+.banner-contenido p {
+    animation: slideInDown 0.8s ease;
+}
+
+.banner-contenido a {
+    animation: slideInDown 1s ease;
+}
+
 .mensaje-exito {
     animation: slideInDown 0.5s ease;
+}
+
+.notificacion {
+    animation: slideInRight 0.3s ease;
 }

@@ -3,45 +3,74 @@ let catalogoActual = [...productos];
 function renderizarCatalogo(productosArray) {
     const contenedor = document.getElementById('catalogo-container');
     if (!contenedor) return;
-    
+
     if (productosArray.length === 0) {
-        contenedor.innerHTML = '<p class="sin-resultados text-center p-4">🌿 No encontramos plantas con ese filtro</p>';
+        contenedor.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <p class="fs-4">🌿 No encontramos plantas con ese filtro</p>
+            </div>
+        `;
         return;
     }
-    
+
     contenedor.innerHTML = productosArray.map(producto => `
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="tarjeta-producto h-100">
-                <img src="${producto.imagen}" class="img-fluid" alt="${producto.nombre}" style="height: 200px; object-fit: cover; width: 100%;">
-                <div class="p-3">
-                    <h3>${producto.nombre}</h3>
-                    <p class="descripcion text-muted small">${producto.descripcion}</p>
-                    <p class="dificultad">🏷️ Cuidado: ${producto.dificultad}</p>
-                    <p class="precio text-success fw-bold fs-4">S/ ${producto.precio}</p>
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-success w-50 btn-agregar" data-id="${producto.id}">Agregar 🛒</button>
-                        <button class="btn btn-outline-success w-50 btn-detalle" data-id="${producto.id}" data-bs-toggle="modal" data-bs-target="#modalDetalle">Ver más</button>
+        <div class="col">
+            <div class="card h-100 shadow-sm card-producto">
+                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-success">${producto.nombre}</h5>
+                    <p class="card-text text-muted small">${producto.descripcion}</p>
+                    <p class="card-text"><small>🏷️ Cuidado: ${producto.dificultad}</small></p>
+                    <p class="card-text fw-bold fs-4 text-success">S/ ${producto.precio}</p>
+                    <div class="mt-auto d-flex gap-2">
+                        <button class="btn btn-success flex-grow-1 btn-agregar" data-id="${producto.id}">Agregar 🛒</button>
+                        <button class="btn btn-outline-success btn-detalle" data-id="${producto.id}" data-bs-toggle="modal" data-bs-target="#modalDetalle">Ver más</button>
                     </div>
                 </div>
             </div>
         </div>
     `).join('');
-    
-    // Evento agregar al carrito
+
     document.querySelectorAll('.btn-agregar').forEach(btn => {
-        btn.addEventListener('click', () => {
-            agregarAlCarrito(parseInt(btn.dataset.id));
+        btn.addEventListener('click', function() {
+            agregarAlCarrito(parseInt(this.dataset.id));
         });
     });
-    
-    // Evento ver detalle (abre modal)
+
     document.querySelectorAll('.btn-detalle').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = parseInt(btn.dataset.id);
+        btn.addEventListener('click', function() {
+            const id = parseInt(this.dataset.id);
             const producto = productos.find(p => p.id === id);
             if (producto) {
                 mostrarDetalleModal(producto);
             }
+        });
+    });
+}
+
+function renderizarDestacados() {
+    const contenedor = document.getElementById('destacados-container');
+    if (!contenedor) return;
+
+    const destacados = productos.slice(0, 4);
+
+    contenedor.innerHTML = destacados.map(producto => `
+        <div class="col">
+            <div class="card h-100 shadow-sm card-producto">
+                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-success">${producto.nombre}</h5>
+                    <p class="card-text text-muted small">${producto.descripcion.substring(0, 40)}...</p>
+                    <p class="card-text fw-bold fs-4 text-success">S/ ${producto.precio}</p>
+                    <button class="btn btn-success w-100 btn-agregar" data-id="${producto.id}">Agregar 🛒</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    document.querySelectorAll('.btn-agregar').forEach(btn => {
+        btn.addEventListener('click', function() {
+            agregarAlCarrito(parseInt(this.dataset.id));
         });
     });
 }
@@ -54,41 +83,17 @@ function mostrarDetalleModal(producto) {
     document.getElementById('modalCategoria').textContent = `Categoría: ${producto.categoria}`;
     document.getElementById('modalDificultad').textContent = `Cuidado: ${producto.dificultad}`;
     document.getElementById('modalPrecio').textContent = `S/ ${producto.precio}`;
-    
+
     const btnAgregar = document.getElementById('modalAgregar');
     btnAgregar.dataset.id = producto.id;
-    
-    // Remover eventos anteriores para evitar duplicados
+
     const nuevoBtn = btnAgregar.cloneNode(true);
     btnAgregar.parentNode.replaceChild(nuevoBtn, btnAgregar);
-    
-    nuevoBtn.addEventListener('click', () => {
-        agregarAlCarrito(parseInt(nuevoBtn.dataset.id));
+
+    nuevoBtn.addEventListener('click', function() {
+        agregarAlCarrito(parseInt(this.dataset.id));
         const modal = bootstrap.Modal.getInstance(document.getElementById('modalDetalle'));
         if (modal) modal.hide();
-    });
-}
-
-function renderizarDestacados() {
-    const contenedor = document.getElementById('destacados-container');
-    if (!contenedor) return;
-    
-    const destacados = productos.slice(0, 4);
-    
-    contenedor.innerHTML = destacados.map(producto => `
-        <article class="tarjeta-producto">
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p class="descripcion">${producto.descripcion.substring(0, 40)}...</p>
-            <p class="precio">S/ ${producto.precio}</p>
-            <button class="btn-agregar" data-id="${producto.id}">Agregar 🛒</button>
-        </article>
-    `).join('');
-    
-    document.querySelectorAll('.btn-agregar').forEach(btn => {
-        btn.addEventListener('click', () => {
-            agregarAlCarrito(parseInt(btn.dataset.id));
-        });
     });
 }
 
@@ -102,11 +107,15 @@ function filtrarPorDificultad(dificultad) {
 }
 
 function buscarProductos(termino) {
-    const textoBusqueda = termino.toLowerCase();
-    catalogoActual = productos.filter(producto => 
-        producto.nombre.toLowerCase().includes(textoBusqueda) ||
-        producto.descripcion.toLowerCase().includes(textoBusqueda) ||
-        producto.categoria.toLowerCase().includes(textoBusqueda)
-    );
+    const textoBusqueda = termino.toLowerCase().trim();
+    if (textoBusqueda === '') {
+        catalogoActual = [...productos];
+    } else {
+        catalogoActual = productos.filter(producto =>
+            producto.nombre.toLowerCase().includes(textoBusqueda) ||
+            producto.descripcion.toLowerCase().includes(textoBusqueda) ||
+            producto.categoria.toLowerCase().includes(textoBusqueda)
+        );
+    }
     renderizarCatalogo(catalogoActual);
 }

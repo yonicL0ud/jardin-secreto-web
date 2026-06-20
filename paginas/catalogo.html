@@ -1,78 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jardín Secreto | Catálogo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-    <header style="position: sticky; top: 0; z-index: 1000;">
+
+    <!-- ============================================ -->
+    <!-- HEADER -->
+    <!-- ============================================ -->
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-success">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="../index.html">
-                    <img src="../img/logo.svg" alt="Logo Jardín Secreto" width="40" height="40" class="me-2">
+                    <img src="../img/logo.svg" alt="Logo Jardín Secreto" width="40" height="40" class="me-2" />
                     <span class="fw-bold">Jardín Secreto</span>
                 </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Menú de navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="catalogo.html">Catálogo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">Contacto</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="catalogo.html">Catálogo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                     </ul>
-                    <div class="carrito-icono ms-3" onclick="window.location.href='carrito.html'" style="cursor: pointer;">
+                    <a class="carrito-icono ms-lg-3" href="carrito.html">
                         <span>🛒</span>
-                        <span class="contador-carrito" id="contador-header" style="background-color: #F9A8D4; border-radius: 50%; padding: 2px 8px; margin-left: 5px;">0</span>
-                    </div>
+                        <span class="badge rounded-pill bg-danger" id="contador-header">0</span>
+                    </a>
                 </div>
             </div>
         </nav>
     </header>
 
+    <!-- ============================================ -->
+    <!-- MAIN -->
+    <!-- ============================================ -->
     <main>
-        <div class="filtros">
-            <input type="text" id="buscador" placeholder="🔍 Buscar plantas...">
-            <div class="botones-filtro">
-                <button class="filtro-btn activo" data-filtro="todos">Todos</button>
-                <button class="filtro-btn" data-filtro="fácil">Cuidado fácil</button>
-                <button class="filtro-btn" data-filtro="moderado">Cuidado moderado</button>
+
+        <!-- FILTROS -->
+        <div class="container mt-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-12 col-md-6">
+                    <input type="text" id="buscador" class="form-control" placeholder="🔍 Buscar plantas..." aria-label="Buscar plantas" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-flex flex-wrap gap-2 justify-content-md-end">
+                        <button class="btn btn-outline-success filtro-btn active" data-filtro="todos">Todos</button>
+                        <button class="btn btn-outline-success filtro-btn" data-filtro="fácil">Cuidado fácil</button>
+                        <button class="btn btn-outline-success filtro-btn" data-filtro="moderado">Cuidado moderado</button>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <section class="catalogo container my-4">
-            <div id="catalogo-container" class="row g-4"></div>
+
+        <!-- CATÁLOGO -->
+        <section class="container my-4">
+            <div id="catalogo-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
         </section>
+
     </main>
 
-    <footer>
-        <p>© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-success text-white text-center py-4 mt-5">
+        <p class="mb-0">© 2026 Jardín Secreto - Cultivando bienestar 🌸</p>
     </footer>
 
-    <!-- MODAL PARA VISTA DE DETALLE -->
+    <!-- ============================================ -->
+    <!-- MODAL para vista de detalle -->
+    <!-- ============================================ -->
     <div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalNombre">Nombre producto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <img id="modalImagen" src="" alt="" class="img-fluid rounded">
+                            <img id="modalImagen" src="" alt="" class="img-fluid rounded" />
                         </div>
                         <div class="col-md-6">
                             <p id="modalDescripcion" class="mb-3"></p>
@@ -86,12 +100,17 @@
             </div>
         </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
     <script src="../js/data.js"></script>
     <script src="../js/carrito.js"></script>
     <script src="../js/storage.js"></script>
     <script src="../js/catalogo.js"></script>
     <script src="../js/main.js"></script>
+
 </body>
 </html>

@@ -2,8 +2,10 @@ let carrito = [];
 
 function agregarAlCarrito(id) {
     const producto = productos.find(p => p.id === id);
+    if (!producto) return;
+
     const itemExistente = carrito.find(item => item.id === id);
-    
+
     if (itemExistente) {
         itemExistente.cantidad++;
     } else {
@@ -15,7 +17,7 @@ function agregarAlCarrito(id) {
             cantidad: 1
         });
     }
-    
+
     guardarCarrito();
     actualizarContadorCarrito();
     actualizarVistaCarrito();
@@ -34,7 +36,7 @@ function actualizarCantidad(id, nuevaCantidad) {
         eliminarDelCarrito(id);
         return;
     }
-    
+
     const item = carrito.find(item => item.id === id);
     if (item) {
         item.cantidad = nuevaCantidad;
@@ -64,7 +66,7 @@ function calcularTotalItems() {
 
 function actualizarContadorCarrito() {
     const totalItems = calcularTotalItems();
-    document.querySelectorAll('.contador-carrito').forEach(el => {
+    document.querySelectorAll('#contador-header').forEach(el => {
         el.textContent = totalItems;
     });
 }
@@ -72,14 +74,14 @@ function actualizarContadorCarrito() {
 function actualizarVistaCarrito() {
     const contenedor = document.getElementById('items-carrito');
     if (!contenedor) return;
-    
+
     if (carrito.length === 0) {
-        contenedor.innerHTML = '<p class="carrito-vacio" style="text-align:center; padding:2rem;">🌸 Tu carrito está vacío. ¡Agrega algunas plantas!</p>';
+        contenedor.innerHTML = `<p class="carrito-vacio">🌸 Tu carrito está vacío. ¡Agrega algunas plantas!</p>`;
         document.getElementById('subtotal').textContent = 'S/ 0.00';
         document.getElementById('total').textContent = 'S/ 0.00';
         return;
     }
-    
+
     contenedor.innerHTML = carrito.map(item => `
         <div class="item-carrito">
             <img src="${item.imagen}" alt="${item.nombre}">
@@ -88,7 +90,7 @@ function actualizarVistaCarrito() {
                 <p>S/ ${item.precio}</p>
             </div>
             <div class="cantidad">
-                <button class="btn-cantidad" data-id="${item.id}" data-cambio="-1">-</button>
+                <button class="btn-cantidad" data-id="${item.id}" data-cambio="-1">−</button>
                 <span>${item.cantidad}</span>
                 <button class="btn-cantidad" data-id="${item.id}" data-cambio="1">+</button>
             </div>
@@ -96,33 +98,32 @@ function actualizarVistaCarrito() {
             <button class="btn-eliminar" data-id="${item.id}">🗑️</button>
         </div>
     `).join('');
-    
+
     const subtotal = calcularTotal();
     document.getElementById('subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
     document.getElementById('total').textContent = `S/ ${subtotal.toFixed(2)}`;
-    
+
     // EVENTO 1: click en botones de cantidad
     document.querySelectorAll('.btn-cantidad').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = parseInt(btn.dataset.id);
-            const cambio = parseInt(btn.dataset.cambio);
+        btn.addEventListener('click', function() {
+            const id = parseInt(this.dataset.id);
+            const cambio = parseInt(this.dataset.cambio);
             const item = carrito.find(i => i.id === id);
             if (item) {
                 actualizarCantidad(id, item.cantidad + cambio);
             }
         });
     });
-    
+
     // EVENTO 2: click en botones de eliminar
     document.querySelectorAll('.btn-eliminar').forEach(btn => {
-        btn.addEventListener('click', () => {
-            eliminarDelCarrito(parseInt(btn.dataset.id));
+        btn.addEventListener('click', function() {
+            eliminarDelCarrito(parseInt(this.dataset.id));
         });
     });
-    
-    // EVENTO 3: keydown en el documento (para cumplir con ≥3 tipos de eventos)
+
+    // EVENTO 3: keydown (ESC para cerrar modal)
     document.addEventListener('keydown', function handlerTeclado(e) {
-        // Si presionas ESC y hay un modal abierto, lo cerramos
         if (e.key === 'Escape') {
             const modal = document.querySelector('.modal.show');
             if (modal) {
@@ -130,10 +131,9 @@ function actualizarVistaCarrito() {
                 if (modalInstance) modalInstance.hide();
             }
         }
-        // Remover el listener después de usarlo para no acumular
         document.removeEventListener('keydown', handlerTeclado);
     });
-    
+
     const btnVaciar = document.getElementById('vaciar-carrito');
     if (btnVaciar) {
         btnVaciar.onclick = () => vaciarCarrito();
@@ -145,5 +145,7 @@ function mostrarNotificacion(mensaje) {
     notif.className = 'notificacion';
     notif.textContent = mensaje;
     document.body.appendChild(notif);
-    setTimeout(() => notif.remove(), 2000);
+    setTimeout(() => {
+        if (notif.remove) notif.remove();
+    }, 2500);
 }
