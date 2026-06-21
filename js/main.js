@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     if (typeof cargarCarritoStorage === 'function') {
         cargarCarritoStorage();
     }
@@ -38,6 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('items-carrito')) {
         if (typeof actualizarVistaCarrito === 'function') {
             actualizarVistaCarrito();
+        }
+        
+        const btnVaciar = document.getElementById('vaciar-carrito');
+        if (btnVaciar && typeof vaciarCarrito === 'function') {
+            btnVaciar.addEventListener('click', function() {
+                if (confirm('¿Seguro que quieres vaciar el carrito?')) {
+                    vaciarCarrito();
+                    if (typeof mostrarNotificacion === 'function') {
+                        mostrarNotificacion('Carrito vaciado');
+                    }
+                }
+            });
         }
     }
 
