@@ -12,7 +12,7 @@ function inicializarEventosGlobales() {
     const carritoIcono = document.querySelector('.carrito-icono');
     if (carritoIcono) {
         carritoIcono.addEventListener('click', () => {
-            window.location.href = 'pages/carrito.html';
+            window.location.href = 'paginas/carrito.html';
         });
     }
     

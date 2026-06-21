@@ -82,22 +82,32 @@ function actualizarVistaCarrito() {
         return;
     }
 
-    contenedor.innerHTML = carrito.map(item => `
-        <div class="item-carrito">
-            <img src="${item.imagen}" alt="${item.nombre}">
-            <div class="info">
-                <h4>${item.nombre}</h4>
-                <p>S/ ${item.precio}</p>
+    contenedor.innerHTML = carrito.map(item => {
+        let imgSrc = item.imagen;
+        if (imgSrc && imgSrc.startsWith('img/')) {
+            imgSrc = '../' + imgSrc;
+        }
+        if (!imgSrc || imgSrc === '') {
+            imgSrc = '../img/placeholder.jpg';
+        }
+        
+        return `
+            <div class="item-carrito">
+                <img src="${imgSrc}" alt="${item.nombre}">
+                <div class="info">
+                    <h4>${item.nombre}</h4>
+                    <p>S/ ${item.precio}</p>
+                </div>
+                <div class="cantidad">
+                    <button class="btn-cantidad" data-id="${item.id}" data-cambio="-1">−</button>
+                    <span>${item.cantidad}</span>
+                    <button class="btn-cantidad" data-id="${item.id}" data-cambio="1">+</button>
+                </div>
+                <p class="subtotal-item">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+                <button class="btn-eliminar" data-id="${item.id}">🗑️</button>
             </div>
-            <div class="cantidad">
-                <button class="btn-cantidad" data-id="${item.id}" data-cambio="-1">−</button>
-                <span>${item.cantidad}</span>
-                <button class="btn-cantidad" data-id="${item.id}" data-cambio="1">+</button>
-            </div>
-            <p class="subtotal-item">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
-            <button class="btn-eliminar" data-id="${item.id}">🗑️</button>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
     const subtotal = calcularTotal();
     document.getElementById('subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
@@ -118,17 +128,6 @@ function actualizarVistaCarrito() {
         btn.addEventListener('click', function() {
             eliminarDelCarrito(parseInt(this.dataset.id));
         });
-    });
-
-    document.addEventListener('keydown', function handlerTeclado(e) {
-        if (e.key === 'Escape') {
-            const modal = document.querySelector('.modal.show');
-            if (modal) {
-                const modalInstance = bootstrap.Modal.getInstance(modal);
-                if (modalInstance) modalInstance.hide();
-            }
-        }
-        document.removeEventListener('keydown', handlerTeclado);
     });
 
     const btnVaciar = document.getElementById('vaciar-carrito');

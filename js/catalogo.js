@@ -57,7 +57,7 @@ function renderizarDestacados() {
     contenedor.innerHTML = destacados.map(producto => `
         <div class="col">
             <div class="card h-100 shadow-sm card-producto">
-                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                <img src="${producto.imagenHome}" class="card-img-top" alt="${producto.nombre}">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title text-success">${producto.nombre}</h5>
                     <p class="card-text text-muted small">${producto.descripcion.substring(0, 40)}...</p>
